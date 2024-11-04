@@ -1,5 +1,5 @@
 import express from 'express';
-import Hello from './Hello';
+import Hello from './Hello.js';
 const app = express();
-Hello(app);
+Hello(app)
 app.listen(4000)
