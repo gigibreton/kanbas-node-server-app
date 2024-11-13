@@ -5,6 +5,8 @@ import cors from 'cors';
 import "dotenv/config";
 import session from "express-session";
 import UserRoutes from './Kanbas/Users/routes.js';
+import CourseRoutes from "./Kanbas/Courses/routes.js";
+import ModuleRoutes from './Kanbas/Modules/routes.js';
 const app = express();
 app.use(cors({
     credentials: true,
@@ -26,6 +28,8 @@ if (process.env.NODE_ENV !== "development") {
 app.use(session(sessionOptions));
 app.use(express.json());
 UserRoutes(app);
+CourseRoutes(app);
+ModuleRoutes(app);
 Lab5(app);
 Hello(app);
 app.listen(process.env.PORT || 4000)
