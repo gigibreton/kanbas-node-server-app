@@ -1,5 +1,18 @@
 import Database from "../Database/index.js";
-export function enrollUserInCourse(userId, courseId) {
+export function enrollUser(userId, courseId) {
+    const enrollment = {
+        _id: Date.now().toString(),
+        user: userId,
+        course: courseId,
+    };
+    Database.enrollments.push(enrollment);
+    return enrollment;
+}
+export function unenrollUser(userId, courseId) {
     const { enrollments } = Database;
-    enrollments.push({ _id: Date.now(), user: userId, course: courseId });
+    Database.enrollments = enrollments.filter((e) => !(e.user == userId && e.course == courseId));
+}
+export function getEnrollments(userId) {
+    const enrollments = Database.enrollments.filter((e) => e.user === userId);
+    return enrollments;
 }
