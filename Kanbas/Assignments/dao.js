@@ -1,9 +1,10 @@
 import Database from "../Database/index.js";
 export function updateAssignment(assignmentId, assignmentUpdates) {
     const { assignments } = Database;
-    const assignment = assignments.find((assignment) => assignment._id === assignmentId);
-    Object.assign(assignment, assignmentUpdates);
-    return assignment;
+    const index = assignments.findIndex(assignment => assignment._id === assignmentId);
+    if (index != -1)
+        assignments[index] = { ...assignments[index], ...assignmentUpdates };
+    return assignments[index];
 }
 export function deleteAssignment(assignmentId) {
     const { assignments } = Database;
