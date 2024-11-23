@@ -1,10 +1,9 @@
 // import db from "../Database/index.js";
 import model from "./model.js";
 // let { users } = db;
-export const createUser = (user) => {
-    // const newUser = { ...user, _id: Date.now().toString(), role: user.role || "STUDENT" };
-    // users = [...users, newUser];
-    // return newUser;
+const createUser = async (req, res) => {
+    const user = await dao.createUser(req.body);
+    res.json(user);
 };
 // export const findAllUsers = () => users;
 export const findAllUsers = () => model.find();
