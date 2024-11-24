@@ -1,10 +1,10 @@
 // import db from "../Database/index.js";
 import model from "./model.js";
 // let { users } = db;
-const createUser = async (req, res) => {
-    const user = await dao.createUser(req.body);
-    res.json(user);
-};
+export const createUser = (user) => {
+    delete user._id
+    return model.create(user);
+}
 // export const findAllUsers = () => users;
 export const findAllUsers = () => model.find();
 export const findUserById = (userId) => model.findById(userId);
